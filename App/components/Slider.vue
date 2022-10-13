@@ -1,6 +1,7 @@
 <script setup>
 const config = useRuntimeConfig();
 
+// API
 const { data: images } = await useLazyFetch(config.apiUrl + "/api/slides?populate=*");
 
 const timer = ref(0);
@@ -73,7 +74,7 @@ onMounted(() => {
         <img
           :src="config.apiUrl + currentSlide.attributes.Image.data.attributes.url"
           :alt="currentSlide.attributes.Text"
-          class="object-cover w-full h-full"
+          class="object-cover object-center w-full h-full"
         />
       </li>
     </TransitionGroup>
@@ -87,7 +88,7 @@ onMounted(() => {
         <li
           v-for="(nav, index) in images.data"
           :key="nav.id"
-          class="relative flex-1 py-2 border-t-2 cursor-pointer border-white/50 hover:border-white hover:text-white"
+          class="relative flex-1 py-2 border-t-2 cursor-pointer border-white/50 md:hover:border-white md:hover:text-white"
           :class="[images.data.length > 1 ? 'text-white/80' : 'text-white']"
           @click="setSlide(index)"
         >
