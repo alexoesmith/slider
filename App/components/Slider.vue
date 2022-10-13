@@ -1,6 +1,4 @@
 <script setup>
-import LoadingVue from "./Loading.vue";
-
 const config = useRuntimeConfig();
 
 const { data: images } = await useLazyFetch(config.apiUrl + "/api/slides?populate=*");
